@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Camila (@camila.ofc) • Fotos y videos de Instagram</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Inter para simular a UI do IG) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'ig-bg': '#000000',
+                        'ig-text': '#f5f5f5',
+                        'ig-text-secondary': '#a8a8a8',
+                        'ig-border': '#262626',
+                        'ig-blue': '#0095f6',
+                        'ig-blue-hover': '#1877f2',
+                        'ig-link': '#e0f1ff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f5;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animação para o botão de Follow (Pulse sutil) */
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+        }
+        .animate-click:active {
+            animation: pulse-soft 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- HEADER (TOP BAR MOBILE) -->
+    <header class="sticky top-0 bg-ig-bg border-b border-ig-border z-40 px-4 h-12 flex justify-between items-center">
+        <div class="flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-lock text-sm"></i>
+            <h1 class="font-bold text-base tracking-tight">camila.ofc</h1>
+            <i class="fa-solid fa-chevron-down text-xs text-ig-text-secondary ml-1"></i>
+        </div>
+        <div class="flex items-center gap-5 text-xl">
+            <i class="fa-regular fa-square-plus cursor-pointer"></i>
+            <i class="fa-solid fa-bars cursor-pointer"></i>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 w-full max-w-md mx-auto relative pb-20">
+        
+        <!-- PROFILE INFO (FOTO + MÉTRICAS) -->
+        <div class="px-4 pt-4 pb-3 flex items-center justify-between">
+            <!-- Avatar Circle -->
+            <div class="relative cursor-pointer">
+                <!-- Gradiente de Story (vazio/visto no modo escuro do IG é um cinza) -->
+                <div class="w-20 h-20 rounded-full p-[2px] bg-ig-border">
+                    <div class="w-full h-full bg-ig-bg rounded-full p-[2px]">
+                        <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" alt="Camila Profile" class="w-full h-full rounded-full object-cover border border-ig-border">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metricas -->
+            <div class="flex-1 flex justify-around ml-4 text-center">
+                <div class="flex flex-col">
+                    <span class="font-bold text-base">42</span>
+                    <span class="text-xs text-ig-text-secondary">publicaciones</span>
+                </div>
+                <div class="flex flex-col cursor-pointer" onclick="showFollowPrompt()">
+                    <span class="font-bold text-base">105k</span>
+                    <span class="text-xs text-ig-text-secondary">seguidores</span>
+                </div>
+                <div class="flex flex-col cursor-pointer" onclick="showFollowPrompt()">
+                    <span class="font-bold text-base">21</span>
+                    <span class="text-xs text-ig-text-secondary">seguidos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIO SECTION -->
+        <div class="px-4 pb-4">
+            <h2 class="font-bold text-sm mb-1">Camila 💋✨</h2>
+            <div class="text-sm leading-snug space-y-0.5">
+                <p>Modelo & Creadora de Contenido 🔞</p>
+                <p>📍 Gira actual: <span class="dynamic-city font-semibold text-white">Tu ciudad</span></p>
+                <p>Solo atiendo citas serias y verificadas.</p>
+                <p>⚠️ Mi agenda, fotos sin censura y precios 👇</p>
+                
+                <!-- Link na Bio (A ÚNICA SAÍDA REAL) -->
+                <a href="index.html" class="flex items-center gap-1 text-ig-link font-medium mt-1 w-max bg-gray-900/50 px-2 py-1 rounded-md border border-gray-800">
+                    <i class="fa-solid fa-link text-xs"></i>
+                    camila-vip.com/citas-secretas
+                </a>
+            </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="px-4 flex gap-2 pb-5">
+            <button onclick="toggleFollowState(this)" id="followBtn" class="flex-1 bg-ig-blue hover:bg-ig-blue-hover text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click">
+                Seguir
+            </button>
+            <button onclick="showFollowPrompt()" class="flex-1 bg-[#363636] hover:bg-[#262626] text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click">
+                Mensaje
+            </button>
+        </div>
+
+        <!-- HIGHLIGHTS (STORIES DESTAQUE) -->
+        <div class="px-2 pb-5 flex gap-4 overflow-x-auto hide-scrollbar">
+            <!-- Highlight 1 -->
+            <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="showFollowPrompt()">
+                <div class="w-16 h-16 rounded-full p-[1px] bg-ig-border">
+                    <div class="w-full h-full bg-[#1a1a1a] rounded-full p-[2px] flex items-center justify-center text-gray-500">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <span class="text-xs">VIP</span>
+            </div>
+            <!-- Highlight 2 -->
+            <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="showFollowPrompt()">
+                <div class="w-16 h-16 rounded-full p-[1px] bg-ig-border">
+                    <div class="w-full h-full bg-[#1a1a1a] rounded-full p-[2px] flex items-center justify-center text-gray-500">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                </div>
+                <span class="text-xs">Gira</span>
+            </div>
+            <!-- Highlight 3 -->
+            <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="showFollowPrompt()">
+                <div class="w-16 h-16 rounded-full p-[1px] bg-ig-border">
+                    <div class="w-full h-full bg-[#1a1a1a] rounded-full p-[2px] flex items-center justify-center text-gray-500">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <span class="text-xs">Reviews</span>
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="flex border-t border-ig-border">
+            <div class="flex-1 py-3 flex justify-center border-t border-white cursor-pointer">
+                <i class="fa-solid fa-table-cells text-xl"></i>
+            </div>
+            <div class="flex-1 py-3 flex justify-center text-ig-text-secondary cursor-pointer" onclick="showFollowPrompt()">
+                <i class="fa-regular fa-circle-play text-xl"></i>
+            </div>
+            <div class="flex-1 py-3 flex justify-center text-ig-text-secondary cursor-pointer" onclick="showFollowPrompt()">
+                <i class="fa-regular fa-user text-xl"></i>
+            </div>
+        </div>
+
+        <!-- LOCKED CONTENT (FEED PRIVADO) -->
+        <div class="py-12 px-6 text-center border-t border-ig-border flex flex-col items-center justify-center">
+            <div class="w-16 h-16 rounded-full border-2 border-ig-text flex items-center justify-center mb-4">
+                <i class="fa-solid fa-lock text-3xl"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Esta cuenta es privada</h3>
+            <p class="text-sm text-ig-text-secondary mb-4">
+                Sigue esta cuenta para ver sus fotos y videos.
+            </p>
+            <p class="text-xs text-gray-500 italic max-w-[250px]">
+                (Psst... El contenido completo y las citas están en el enlace de la biografía arriba 👆)
+            </p>
+        </div>
+
+    </main>
+
+    <!-- BOTTOM NAVIGATION (BOTTOM BAR) -->
+    <nav class="fixed bottom-0 w-full bg-ig-bg border-t border-ig-border h-12 flex justify-around items-center z-40 max-w-md left-1/2 -translate-x-1/2 px-2">
+        <i class="fa-solid fa-house text-xl cursor-pointer" onclick="showFollowPrompt()"></i>
+        <i class="fa-solid fa-magnifying-glass text-xl cursor-pointer text-ig-text-secondary" onclick="showFollowPrompt()"></i>
+        <i class="fa-regular fa-square-plus text-xl cursor-pointer text-ig-text-secondary" onclick="showFollowPrompt()"></i>
+        <i class="fa-brands fa-instagram text-xl cursor-pointer text-ig-text-secondary" onclick="showFollowPrompt()"></i>
+        <!-- Mini Profile Pic in Bottom Nav -->
+        <div class="w-6 h-6 rounded-full bg-ig-border p-[1px] cursor-pointer opacity-50" onclick="showFollowPrompt()">
+            <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" class="w-full h-full rounded-full object-cover">
+        </div>
+    </nav>
+
+    <!-- TOAST (ALERTA NATIVO IG) -->
+    <div id="toast" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#262626] text-white px-4 py-3 rounded-xl text-sm font-semibold opacity-0 transition-opacity duration-300 pointer-events-none z-50 text-center shadow-2xl hidden">
+        Esta cuenta es privada. Haz clic en el enlace de la biografía para ver el contenido.
+    </div>
+
+    <script>
+        // --- Lógica Geolocation IP ---
+        async function fetchUserCity() {
+            try {
+                const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
+                const data = await response.json();
+                const city = data.city || 'tu ciudad';
+                
+                document.querySelectorAll('.dynamic-city').forEach(el => {
+                    el.textContent = city;
+                });
+            } catch (error) {
+                console.warn("No se pudo obtener la ciudad via IP");
+            }
+        }
+        fetchUserCity();
+
+        // --- Interações Falsas (Fake UX) ---
+        let isFollowing = false;
+        
+        function toggleFollowState(btn) {
+            isFollowing = !isFollowing;
+            
+            if (isFollowing) {
+                // Estado "Solicitado"
+                btn.className = "flex-1 bg-[#363636] hover:bg-[#262626] text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click border border-transparent";
+                btn.innerText = "Pendiente";
+                showToast("Solicitud enviada. Entra al enlace de la bio para acceso inmediato.");
+            } else {
+                // Estado "Seguir" original
+                btn.className = "flex-1 bg-ig-blue hover:bg-ig-blue-hover text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click";
+                btn.innerText = "Seguir";
+            }
+        }
+
+        let toastTimeout;
+        function showFollowPrompt() {
+            showToast("Esta cuenta es privada. Sigue el enlace en la biografía.");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('hidden');
+            
+            // Pequeno delay para garantir que o renderizador pegue a remoção do hidden antes de animar a opacidade
+            setTimeout(() => {
+                toast.classList.replace('opacity-0', 'opacity-100');
+            }, 10);
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 300); // Espera a transição terminar
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
