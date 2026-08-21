@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Camila (@camila.ofc) • Fotos y videos exclusivos</title>
+    <title>Camila (@camila.ofc) • Perfil Exclusivo</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind Configuration (Mesclado IG + Landing) -->
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -23,47 +23,34 @@
                         // Cores do Instagram
                         'ig-bg': '#000000',
                         'ig-text': '#f5f5f5',
-                        'ig-text-secondary': '#a8a8a8',
                         'ig-border': '#262626',
                         'ig-blue': '#0095f6',
-                        'ig-blue-hover': '#1877f2',
-                        'ig-link': '#e0f1ff',
                         
-                        // Cores da Landing Page
-                        'dark-bg': '#0d0d0d',
-                        'card-bg': '#1a1a1a',
-                        'card-hover': '#242424',
-                        'gold-primary': '#e5a93c',
-                        'gold-light': '#f4c76a',
-                        'neon-red': '#ff2a2a',
-                        'dark-red': '#990000',
-                        'verified-green': '#10b981'
+                        // Cores do OnlyFans
+                        'of-blue': '#00AFF0',
+                        'of-blue-hover': '#009ce0',
+                        'of-dark': '#242529',
+                        'of-gray': '#8a96a3',
+                        'of-border': '#e0e6ea',
+                        'of-bg': '#f8fafc',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
                     },
                     animation: {
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                    },
-                    keyframes: {
-                        glow: {
-                            '0%': { boxShadow: '0 0 5px rgba(229, 169, 60, 0.2)' },
-                            '100%': { boxShadow: '0 0 20px rgba(229, 169, 60, 0.6)' }
-                        }
                     }
                 }
             }
         }
     </script>
 
-    <!-- Estilos globais unificados -->
     <style>
         body {
-            background-color: #000000; /* Inicia com fundo do IG */
+            background-color: #000000; /* Inicia com fundo IG */
             color: #f5f5f5;
             -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.3s ease;
         }
         
         .hide-scrollbar::-webkit-scrollbar {
@@ -74,35 +61,25 @@
             scrollbar-width: none;
         }
 
-        /* IG Animations */
-        @keyframes pulse-soft {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(0.98); }
+        /* Animações e Transições */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
         }
-        .animate-click:active {
-            animation: pulse-soft 0.2s ease-in-out;
-        }
-
-        /* Landing Custom Classes */
-        .glass-panel {
-            background: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(229, 169, 60, 0.1);
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(to right, #e5a93c, #fff4d4, #e5a93c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shine 3s linear infinite;
+        /* Loading Spinner OF Style */
+        .loader-of {
+            border: 3px solid rgba(0, 175, 240, 0.2);
+            border-top: 3px solid #00AFF0;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
         }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="antialiased">
@@ -110,14 +87,12 @@
     <!-- ========================================== -->
     <!-- VISTA 1: INSTAGRAM PRIVADO (GATE)          -->
     <!-- ========================================== -->
-    <div id="vista-ig" class="flex flex-col min-h-screen bg-ig-bg font-sans w-full">
-        
-        <!-- HEADER -->
-        <header class="sticky top-0 bg-ig-bg border-b border-ig-border z-40 px-4 h-12 flex justify-between items-center w-full">
+    <div id="vista-ig" class="flex flex-col min-h-screen bg-ig-bg w-full">
+        <header class="sticky top-0 bg-ig-bg border-b border-ig-border z-40 px-4 h-12 flex justify-between items-center w-full max-w-md mx-auto">
             <div class="flex items-center gap-2 cursor-pointer">
                 <i class="fa-solid fa-lock text-sm"></i>
                 <h1 class="font-bold text-base tracking-tight">camila.ofc</h1>
-                <i class="fa-solid fa-chevron-down text-xs text-ig-text-secondary ml-1"></i>
+                <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-1"></i>
             </div>
             <div class="flex items-center gap-5 text-xl">
                 <i class="fa-regular fa-square-plus cursor-pointer" onclick="showFollowPrompt()"></i>
@@ -125,498 +100,383 @@
             </div>
         </header>
 
-        <!-- MAIN CONTENT IG -->
         <main class="flex-1 w-full max-w-md mx-auto relative pb-20">
-            <!-- FOTO + MÉTRICAS -->
             <div class="px-4 pt-4 pb-3 flex items-center justify-between">
                 <div class="relative cursor-pointer">
                     <div class="w-20 h-20 rounded-full p-[2px] bg-ig-border">
                         <div class="w-full h-full bg-ig-bg rounded-full p-[2px]">
-                            <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" alt="Camila Profile" class="w-full h-full rounded-full object-cover border border-ig-border">
+                            <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" alt="Camila" class="w-full h-full rounded-full object-cover">
                         </div>
                     </div>
                 </div>
                 <div class="flex-1 flex justify-around ml-4 text-center">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-base">42</span>
-                        <span class="text-xs text-ig-text-secondary">publicaciones</span>
-                    </div>
-                    <div class="flex flex-col cursor-pointer" onclick="showFollowPrompt()">
-                        <span class="font-bold text-base">105k</span>
-                        <span class="text-xs text-ig-text-secondary">seguidores</span>
-                    </div>
-                    <div class="flex flex-col cursor-pointer" onclick="showFollowPrompt()">
-                        <span class="font-bold text-base">21</span>
-                        <span class="text-xs text-ig-text-secondary">seguidos</span>
-                    </div>
+                    <div class="flex flex-col"><span class="font-bold text-base">145</span><span class="text-xs text-gray-400">publicaciones</span></div>
+                    <div class="flex flex-col cursor-pointer" onclick="showFollowPrompt()"><span class="font-bold text-base">105k</span><span class="text-xs text-gray-400">seguidores</span></div>
+                    <div class="flex flex-col cursor-pointer" onclick="showFollowPrompt()"><span class="font-bold text-base">21</span><span class="text-xs text-gray-400">seguidos</span></div>
                 </div>
             </div>
 
-            <!-- BIO SECTION -->
             <div class="px-4 pb-4">
                 <h2 class="font-bold text-sm mb-1">Camila 💋✨</h2>
                 <div class="text-sm leading-snug space-y-0.5">
                     <p>Modelo & Creadora de Contenido 🔞</p>
-                    <p>📍 Gira actual: <span class="dynamic-city font-semibold text-white">Tu ciudad</span></p>
-                    <p>Solo atiendo citas serias y verificadas.</p>
-                    <p>⚠️ Mi agenda, fotos sin censura y precios 👇</p>
+                    <p>📍 Actualmente en: <span class="dynamic-city font-semibold text-white">tu ciudad</span></p>
+                    <p>La cuenta principal me la banearon.</p>
+                    <p>👇 Sigue mi contenido exclusivo y WhatsApp acá:</p>
                     
-                    <!-- LINK NA BIO (A navegação nativa #oferta funciona sempre) -->
-                    <a href="#oferta" class="inline-flex items-center gap-1 text-ig-link font-medium mt-1 w-max bg-gray-900/50 px-2 py-1 rounded-md border border-gray-800 transition-colors hover:bg-gray-800">
-                        <i class="fa-solid fa-link text-xs"></i>
-                        camila-vip.com/citas-secretas
-                    </a>
+                    <!-- LINK DA BIO (Aciona a transição SPA) -->
+                    <div onclick="abrirLanding()" class="inline-flex items-center gap-1 text-ig-blue font-medium mt-1 w-max px-2 py-1 bg-[#1a1a1a] rounded-md border border-[#333] cursor-pointer hover:bg-[#222]">
+                        <i class="fa-solid fa-link text-xs"></i> onlyfans.com/camylaofc
+                    </div>
                 </div>
             </div>
 
-            <!-- ACTION BUTTONS -->
             <div class="px-4 flex gap-2 pb-5">
-                <button onclick="toggleFollowState(this)" id="followBtn" class="flex-1 bg-ig-blue hover:bg-ig-blue-hover text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click">
-                    Seguir
-                </button>
-                <button onclick="showFollowPrompt()" class="flex-1 bg-[#363636] hover:bg-[#262626] text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click">
-                    Mensaje
-                </button>
+                <button onclick="toggleFollowState(this)" class="flex-1 bg-ig-blue hover:bg-blue-600 text-white font-semibold py-1.5 rounded-lg text-sm transition-colors">Seguir</button>
+                <button onclick="showFollowPrompt()" class="flex-1 bg-[#363636] hover:bg-[#262626] text-white font-semibold py-1.5 rounded-lg text-sm transition-colors">Mensaje</button>
             </div>
 
-            <!-- HIGHLIGHTS -->
-            <div class="px-2 pb-5 flex gap-4 overflow-x-auto hide-scrollbar">
-                <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="showFollowPrompt()">
-                    <div class="w-16 h-16 rounded-full p-[1px] bg-ig-border">
-                        <div class="w-full h-full bg-[#1a1a1a] rounded-full p-[2px] flex items-center justify-center text-gray-500">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <span class="text-xs">VIP</span>
-                </div>
-                <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="showFollowPrompt()">
-                    <div class="w-16 h-16 rounded-full p-[1px] bg-ig-border">
-                        <div class="w-full h-full bg-[#1a1a1a] rounded-full p-[2px] flex items-center justify-center text-gray-500">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                    </div>
-                    <span class="text-xs">Gira</span>
-                </div>
-                <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="showFollowPrompt()">
-                    <div class="w-16 h-16 rounded-full p-[1px] bg-ig-border">
-                        <div class="w-full h-full bg-[#1a1a1a] rounded-full p-[2px] flex items-center justify-center text-gray-500">
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <span class="text-xs">Reviews</span>
-                </div>
-            </div>
-
-            <!-- TABS & LOCKED CONTENT -->
-            <div class="flex border-t border-ig-border">
-                <div class="flex-1 py-3 flex justify-center border-t border-white cursor-pointer">
-                    <i class="fa-solid fa-table-cells text-xl"></i>
-                </div>
-                <div class="flex-1 py-3 flex justify-center text-ig-text-secondary cursor-pointer" onclick="showFollowPrompt()">
-                    <i class="fa-regular fa-circle-play text-xl"></i>
-                </div>
-                <div class="flex-1 py-3 flex justify-center text-ig-text-secondary cursor-pointer" onclick="showFollowPrompt()">
-                    <i class="fa-regular fa-user text-xl"></i>
-                </div>
-            </div>
-            <div class="py-12 px-6 text-center border-t border-ig-border flex flex-col items-center justify-center">
-                <div class="w-16 h-16 rounded-full border-2 border-ig-text flex items-center justify-center mb-4">
+            <div class="py-12 px-6 text-center border-t border-ig-border flex flex-col items-center justify-center mt-6">
+                <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center mb-4">
                     <i class="fa-solid fa-lock text-3xl"></i>
                 </div>
                 <h3 class="font-bold text-lg mb-2">Esta cuenta es privada</h3>
-                <p class="text-sm text-ig-text-secondary mb-4">
-                    Sigue esta cuenta para ver sus fotos y videos.
-                </p>
-                <p class="text-xs text-gray-500 italic max-w-[250px]">
-                    (Psst... El contenido completo y las citas están en el enlace de la biografía arriba 👆)
-                </p>
+                <p class="text-sm text-gray-400 mb-4">Sigue esta cuenta para ver sus fotos y videos.</p>
+                <p class="text-xs text-gray-500 italic max-w-[250px]">(Haz clic en el enlace de la biografía arriba 👆)</p>
             </div>
         </main>
-
-        <!-- BOTTOM NAV IG -->
-        <nav class="fixed bottom-0 w-full bg-ig-bg border-t border-ig-border h-12 flex justify-around items-center z-40 max-w-md left-1/2 -translate-x-1/2 px-2">
-            <i class="fa-solid fa-house text-xl cursor-pointer" onclick="showFollowPrompt()"></i>
-            <i class="fa-solid fa-magnifying-glass text-xl cursor-pointer text-ig-text-secondary" onclick="showFollowPrompt()"></i>
-            <i class="fa-regular fa-square-plus text-xl cursor-pointer text-ig-text-secondary" onclick="showFollowPrompt()"></i>
-            <i class="fa-brands fa-instagram text-xl cursor-pointer text-ig-text-secondary" onclick="showFollowPrompt()"></i>
-            <div class="w-6 h-6 rounded-full bg-ig-border p-[1px] cursor-pointer opacity-50" onclick="showFollowPrompt()">
-                <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" class="w-full h-full rounded-full object-cover">
-            </div>
-        </nav>
-
-        <!-- TOAST IG -->
-        <div id="toast" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#262626] text-white px-4 py-3 rounded-xl text-sm font-semibold opacity-0 transition-opacity duration-300 pointer-events-none z-50 text-center shadow-2xl hidden w-11/12 max-w-sm">
-            Esta cuenta es privada. Haz clic en el enlace de la biografía para ver el contenido.
-        </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- VISTA 2: LANDING PAGE OFERTA (Oculta inicial)-->
+    <!-- TELA DE LOADING DE TRANSIÇÃO               -->
     <!-- ========================================== -->
-    <div id="vista-landing" class="hidden bg-dark-bg min-h-screen text-white pt-[40px] pb-[80px] w-full">
+    <div id="loader-screen" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center hidden">
+        <div class="loader-of mb-4"></div>
+        <p class="text-of-gray font-semibold text-sm">Cargando perfil seguro...</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VISTA 2: ONLYFANS REPLICA                  -->
+    <!-- ========================================== -->
+    <div id="vista-landing" class="hidden bg-white min-h-screen text-of-dark w-full max-w-2xl mx-auto shadow-2xl relative pb-20">
         
-        <!-- URGENCY BANNER -->
-        <div class="fixed top-0 left-0 w-full bg-neon-red text-white text-center py-2 px-4 z-40 font-bold text-sm tracking-wide shadow-[0_0_15px_rgba(255,42,42,0.5)] flex items-center justify-center gap-2">
-            <i class="fa-solid fa-bolt animate-pulse"></i>
-            <span>OFERTA RELÁMPAGO EXPIRA EN:</span>
-            <span id="countdown" class="font-mono bg-dark-red px-2 py-0.5 rounded text-gold-light">10:00</span>
-        </div>
-
-        <main class="max-w-md mx-auto relative pb-6">
-            <!-- HERO IMAGE & HEADER -->
-            <div class="relative w-full aspect-[3/4] bg-card-bg">
-                <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" alt="Camila" class="w-full h-full object-cover object-top opacity-90">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-black/40"></div>
-                <div class="absolute bottom-0 left-0 w-full p-5 flex flex-col justify-end">
-                    <div class="flex items-center gap-2 mb-1">
-                        <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse-fast shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
-                        <span class="text-xs font-semibold tracking-wider text-gray-300">DISPONIBLE AHORA</span>
-                    </div>
-                    <h1 class="font-display text-4xl font-black text-white leading-none tracking-tight mb-2 drop-shadow-lg">CAMILA</h1>
-                    <p class="text-lg font-bold text-gray-200 leading-snug drop-shadow-md">
-                        BUBIS GRANDES, CINTURITA Y CULAZO — <span class="text-neon-red">ÚLTIMOS DÍAS</span>
-                    </p>
-                </div>
+        <!-- Header -->
+        <header class="sticky top-0 bg-white/95 backdrop-blur-md z-40 border-b border-of-border px-4 py-2 flex items-center gap-4">
+            <i class="fa-solid fa-arrow-left text-xl text-of-gray cursor-pointer" onclick="voltarIG()"></i>
+            <div>
+                <h1 class="font-bold text-lg flex items-center gap-1 leading-tight">
+                    Camila 💋✨ <i class="fa-solid fa-circle-check text-of-blue text-sm"></i>
+                </h1>
+                <p class="text-xs text-of-gray font-medium">145 publicaciones • 18.5k Me gusta</p>
             </div>
+        </header>
 
-            <!-- CONTENT SECTION -->
-            <div class="px-5 py-6 space-y-6">
-                <!-- TRUST BADGES -->
-                <div class="bg-card-bg border border-gold-primary/30 rounded-xl p-4 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-gold-primary/10 rounded-bl-full -z-0"></div>
-                    <h2 class="text-sm font-bold text-gold-primary mb-3 uppercase tracking-wider flex items-center gap-2 relative z-10">
-                        <i class="fa-solid fa-shield-halved"></i> Garantía del Sitio
-                    </h2>
-                    <ul class="space-y-2 mb-4 relative z-10">
-                        <li class="flex items-center gap-3 text-sm font-medium text-gray-200">
-                            <span class="flex-shrink-0 w-5 h-5 rounded-full bg-verified-green/20 flex items-center justify-center text-verified-green"><i class="fa-solid fa-check text-xs"></i></span>
-                            IDENTIDAD VERIFICADA
-                        </li>
-                        <li class="flex items-center gap-3 text-sm font-medium text-gray-200">
-                            <span class="flex-shrink-0 w-5 h-5 rounded-full bg-verified-green/20 flex items-center justify-center text-verified-green"><i class="fa-solid fa-check text-xs"></i></span>
-                            FOTOS VERIFICADAS
-                        </li>
-                        <li class="flex items-center gap-3 text-sm font-medium text-gray-200">
-                            <span class="flex-shrink-0 w-5 h-5 rounded-full bg-verified-green/20 flex items-center justify-center text-verified-green"><i class="fa-solid fa-check text-xs"></i></span>
-                            NO PIDO ANTICIPO PARA RESERVAR
-                        </li>
-                    </ul>
-                    <button onclick="openModal('trustModal')" class="w-full py-2 bg-dark-bg border border-gold-primary/50 rounded-lg text-gold-light text-sm font-bold hover:bg-gold-primary/10 transition-colors flex items-center justify-center gap-2 relative z-10">
-                        <i class="fa-solid fa-info-circle"></i> CONFIABILIDAD (Saber más)
-                    </button>
-                </div>
-
-                <!-- BIO / DESCRIPTION -->
-                <div class="text-gray-300 text-sm leading-relaxed space-y-3 font-light">
-                    <h3 class="text-white font-bold text-base border-b border-gray-800 pb-2">
-                        ✨ AMORCITO, LLEGUÉ A <span class="dynamic-city text-gold-light uppercase font-black">TU CIUDAD</span> POR ÚNICOS DÍAS ✨
-                    </h3>
-                    <p>
-                        Hola mi amor, soy una chica jovencita, delgadita y con un cuerpito firme de esos que te encantan agarrar por la cintura.
-                        Me encanta pasarla bien, sin prisas, sin malos tratos y 100% complaciente. Si estás en <span class="dynamic-city text-white font-bold">tu ciudad</span> y buscas una compañía real, discreta y muy caliente para salir de la rutina, soy tu mejor opción 😈
-                    </p>
-                    <div class="bg-gray-900/40 p-3.5 rounded-xl border border-gray-800 space-y-3 mt-4">
-                        <p class="font-bold text-white text-xs uppercase mb-1">🔞 LO QUE HAGO Y DISFRUTAMOS EN NUESTRO ENCUENTRO:</p>
-                        <ul class="space-y-2 text-xs">
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-heart"></i></span> <span><strong class="text-white">Trato de Novia (GFE):</strong> Besos en la boca con lengüita, caricias y trato súper cariñoso.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-fire"></i></span> <span><strong class="text-white">Sexo Oral Sin Censura:</strong> Garganta profunda, chupadita suave y bien mojadita hasta hacerte venir.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-peach"></i></span> <span><strong class="text-white">Sexo Anal Complaciente:</strong> Me encanta hacerlo por el culito, apretadito como te gusta.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-bed"></i></span> <span><strong class="text-white">Todas las Posiciones:</strong> En 4, arriba tuyo, de pie o como me pidas.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-hands"></i></span> <span><strong class="text-white">Masaje Erótico / Relajante:</strong> Para quitarte todo el estrés antes del plato fuerte.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-users"></i></span> <span><strong class="text-white">Atención a Parejas / Tríos:</strong> Abierta a cumplir tus fantasías más ocultas.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon-red mt-0.5"><i class="fa-solid fa-shower"></i></span> <span><strong class="text-white">Lencería Sexy / Baño Juntos:</strong> Todo incluido para que vivas una experiencia completa.</span></li>
-                        </ul>
-                    </div>
-                    <div class="bg-card-bg p-3 rounded-lg border border-gray-800 space-y-2 text-xs">
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-mobile-screen text-gold-primary mt-0.5 text-sm"></i>
-                            <span><strong class="text-white">PAGOS:</strong> Transferencia (SPEI) Únicamente.</span>
-                        </p>
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-location-dot text-gold-primary mt-0.5 text-sm"></i>
-                            <span><strong class="text-white">LUGAR:</strong> A domicilio, hotel o mi departamento privado en <span class="dynamic-city text-white font-bold">tu ciudad</span>.</span>
-                        </p>
-                    </div>
-                    <div class="bg-dark-red/20 border border-dark-red text-gold-light text-xs p-3 rounded-lg text-center font-semibold mt-4 shadow-[0_0_10px_rgba(153,0,0,0.3)]">
-                        ⏳ Atiendo solo a hombres serios y educados. Pocos cupos disponibles hoy en <span class="dynamic-city text-white">tu ciudad</span>.
-                    </div>
-                </div>
-
-                <!-- GALLERY -->
-                <div class="border-t border-gray-800 pt-4">
-                    <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3 font-semibold flex items-center gap-2">
-                        <i class="fa-solid fa-camera text-gold-primary"></i> Galería Exclusiva
-                    </h3>
-                    <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2 snap-x snap-mandatory">
-                        <img src="https://i.postimg.cc/BZmDVPsq/qss.gif" alt="Galeria 1" class="w-32 h-40 object-cover rounded-xl snap-center flex-shrink-0 border border-gray-800">
-                        <img src="https://i.postimg.cc/k4n6jqpp/qss-(2).gif" alt="Galeria 2" class="w-32 h-40 object-cover rounded-xl snap-center flex-shrink-0 border border-gray-800">
-                        <img src="https://i.postimg.cc/N0t5MQBQ/qss-(1).gif" alt="Galeria 3" class="w-32 h-40 object-cover rounded-xl snap-center flex-shrink-0 border border-gray-800">
-                        <div class="w-32 h-40 bg-card-bg rounded-xl snap-center flex-shrink-0 border border-gray-800 flex flex-col items-center justify-center gap-2 text-gray-500" onclick="openModal('checkoutModal', 'WHATSAPP')">
-                            <i class="fa-solid fa-lock text-xl"></i>
-                            <span class="text-xs font-bold text-center px-2">Ver 15 fotos más</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MONETIZATION OPTIONS -->
-                <div class="space-y-4 pt-2">
-                    <div class="bg-card-bg rounded-2xl border border-gray-800 p-1">
-                        <button onclick="openModal('checkoutModal', 'WHATSAPP')" class="w-full bg-[#1e231e] border border-green-900/50 rounded-xl p-4 text-left relative overflow-hidden group">
-                            <div class="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <div class="flex justify-between items-center relative z-10">
-                                <div>
-                                    <h4 class="text-green-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                        <i class="fa-brands fa-whatsapp text-lg"></i> LIBERAR WHATSAPP PERSONAL
-                                    </h4>
-                                    <p class="text-xs text-gray-400">Membresía Mensual. Chat directo y sin censura.</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="block text-xl font-black text-white">$290<span class="text-xs font-normal text-gray-500">MXN</span></span>
-                                </div>
-                            </div>
-                            <div class="mt-3 w-full bg-green-600 hover:bg-green-500 text-white text-center py-2.5 rounded-lg text-sm font-bold shadow-[0_0_10px_rgba(22,163,74,0.3)] transition-colors">
-                                DESBLOQUEAR AHORA
-                            </div>
-                        </button>
-                    </div>
-
-                    <div class="bg-gradient-to-b from-card-bg to-[#2a1111] rounded-2xl border border-neon-red/30 p-1 relative overflow-hidden animate-glow">
-                        <div class="absolute -top-4 -right-4 bg-neon-red text-white text-[10px] font-black uppercase py-1 px-8 rotate-45 shadow-lg z-10">OFERTA 50%</div>
-                        <button onclick="openModal('checkoutModal', 'ENCUENTRO')" class="w-full rounded-xl p-4 text-left relative z-10">
-                            <h4 class="gold-gradient-text font-black text-base mb-1 flex items-center gap-2">
-                                <i class="fa-solid fa-fire text-neon-red"></i> AGENDAR CITA PRESENCIAL
-                            </h4>
-                            <p class="text-xs text-gray-300 mb-3 line-clamp-2">1 Hora de servicio completo (Incluye Anal, Besos, Posiciones y Local a convenir).</p>
-                            <div class="flex items-end gap-3 mb-3">
-                                <span class="text-3xl font-black text-white leading-none">$550<span class="text-sm font-normal text-gray-400">MXN</span></span>
-                                <span class="text-sm text-gray-500 line-through mb-1">$1,100 MXN</span>
-                            </div>
-                            <div class="w-full bg-gradient-to-r from-neon-red to-dark-red hover:from-red-500 hover:to-red-700 text-white text-center py-3 rounded-lg text-sm font-bold shadow-lg transition-all transform active:scale-95 flex justify-center items-center gap-2">
-                                <i class="fa-solid fa-calendar-check"></i> RESERVAR CON DESCUENTO
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- REVIEWS -->
-                <div class="bg-card-bg rounded-xl p-4 border border-gray-800">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-star text-gold-primary"></i> Reseñas
-                        </h3>
-                        <div class="text-[10px] text-gray-400 font-mono">1 Aceptado | 0 Pendientes</div>
-                    </div>
-                    <div class="bg-dark-bg rounded-lg p-3 border border-gray-800/50 relative">
-                        <i class="fa-solid fa-quote-left absolute top-2 right-2 text-gray-700 text-lg"></i>
-                        <div class="flex items-center gap-1 text-gold-primary text-xs mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-xs text-gray-300 italic mb-2">
-                            "Camila tiene un cuerpo de infarto. Altamente recomendable, espero volverla a ver. Me encantaron sus besos y tenerla arriba de mí."
-                        </p>
-                        <span class="text-[10px] text-gray-500">Anónimo — 23-09-2025</span>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- FLOATING ACTION BAR -->
-        <div class="fixed bottom-0 left-0 w-full glass-panel border-t border-gray-800 p-3 z-40 flex gap-2 sm:justify-center">
-            <button onclick="openModal('checkoutModal', 'WHATSAPP')" class="flex-1 bg-[#1e231e] border border-green-800 text-green-400 py-3 rounded-xl text-xs font-bold flex flex-col items-center justify-center gap-1 active:bg-green-900 transition-colors">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>WHATSAPP ($290)</span>
-            </button>
-            <button onclick="openModal('checkoutModal', 'ENCUENTRO')" class="flex-1 bg-gradient-to-r from-neon-red to-dark-red text-white py-3 rounded-xl text-xs font-bold flex flex-col items-center justify-center gap-1 shadow-lg active:scale-95 transition-transform">
-                <i class="fa-solid fa-fire text-lg"></i>
-                <span>CITA ($550)</span>
-            </button>
-        </div>
-
-        <!-- MODALS -->
-        <div id="trustModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300 px-4">
-            <div class="bg-card-bg w-full max-w-sm rounded-2xl border border-gold-primary/30 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="trustModalContent">
-                <div class="bg-gradient-to-r from-gray-900 to-card-bg p-4 border-b border-gray-800 flex justify-between items-center">
-                    <h3 class="text-gold-primary font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved"></i> Sello de Confiabilidad
-                    </h3>
-                    <button onclick="closeModal('trustModal')" class="text-gray-400 hover:text-white">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-                <div class="p-5 space-y-4">
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fa-solid fa-circle-check text-verified-green mt-0.5"></i><span>Revisamos la mayoría de edad de todos los usuarios.</span></li>
-                        <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fa-solid fa-circle-check text-verified-green mt-0.5"></i><span>El usuario ha entregado su documento de identidad y coincide con su foto o vídeo de verificación en vivo.</span></li>
-                        <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fa-solid fa-circle-check text-verified-green mt-0.5"></i><span>Las fotos de este perfil han sido verificadas con cartel del sitio.</span></li>
-                        <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fa-solid fa-circle-check text-verified-green mt-0.5"></i><span>El anunciante no pide depósito anticipado sin garantía.</span></li>
-                    </ul>
-                </div>
-                <div class="p-4 bg-dark-bg border-t border-gray-800">
-                    <button onclick="closeModal('trustModal')" class="w-full py-2.5 bg-gray-800 text-white rounded-lg font-bold text-sm">Entendido</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="checkoutModal" class="fixed inset-0 bg-black/90 z-50 flex items-end sm:items-center justify-center hidden opacity-0 transition-opacity duration-300">
-            <div class="bg-[#121212] w-full max-w-md rounded-t-2xl sm:rounded-2xl h-[85vh] sm:h-auto max-h-[800px] border-t sm:border border-gray-800 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] flex flex-col transform translate-y-full sm:translate-y-0 transition-transform duration-300" id="checkoutModalContent">
-                <div class="p-4 border-b border-gray-800 flex justify-between items-center sticky top-0 bg-[#121212] rounded-t-2xl z-10">
-                    <h3 class="font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-lock text-gold-primary"></i> Pago Seguro
-                    </h3>
-                    <button onclick="closeModal('checkoutModal')" class="w-8 h-8 rounded-full bg-gray-800 text-gray-400 flex items-center justify-center hover:text-white">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <div class="overflow-y-auto flex-1 p-5 hide-scrollbar">
-                    <div class="bg-card-bg border border-gray-800 rounded-xl p-4 mb-6">
-                        <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Resumen de orden</p>
-                        <h4 id="checkoutTitle" class="font-bold text-lg text-white mb-2">Servicio Seleccionado</h4>
-                        <div class="flex justify-between items-end border-t border-gray-800 pt-3 mt-2">
-                            <span class="text-sm text-gray-300">Total a pagar:</span>
-                            <span id="checkoutPrice" class="text-2xl font-black text-gold-primary">$0.00 MXN</span>
-                        </div>
-                    </div>
-                    <div id="checkout-instructions-container" class="mb-4">
-                        <div class="flex items-center justify-center gap-2 mb-3 bg-blue-900/20 text-blue-400 p-2 rounded-lg border border-blue-900/50">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span class="text-xs font-semibold">Pagos procesados de forma segura vía SPEI</span>
-                        </div>
-                        <div id="spei-loading" class="bg-gray-900 rounded-lg p-8 border border-gray-800 text-center flex flex-col items-center justify-center">
-                            <i class="fa-solid fa-circle-notch fa-spin text-3xl text-gold-primary mb-3"></i>
-                            <p class="text-sm text-gray-400">Generando CLABE de pago seguro...</p>
-                        </div>
-                        <div id="spei-data" class="bg-gray-900 rounded-lg p-4 border border-gray-800 text-center hidden">
-                            <p class="text-xs text-gray-400 mb-2">CLABE Interbancaria (SPEI)</p>
-                            <p id="clabe-code" class="text-2xl font-mono text-white tracking-widest mb-3 break-all font-bold" data-clipboard-text="">---</p>
-                            <button onclick="copyCLABE()" class="w-full py-3 bg-gold-primary hover:bg-gold-light text-black rounded-lg text-sm font-black flex items-center justify-center gap-2 mb-3 shadow-[0_0_15px_rgba(229,169,60,0.3)] transition-all">
-                                <i class="fa-regular fa-copy text-lg"></i> COPIAR CLABE DE PAGO
-                            </button>
-                            <div id="payment-status" class="bg-card-bg text-gray-300 text-xs py-2 px-3 rounded flex items-center justify-center gap-2 font-medium border border-gray-800">
-                                Esperando confirmación...
-                            </div>
-                        </div>
-                        <div class="text-[11px] text-gray-500 mt-4 space-y-2 bg-dark-bg p-3 rounded-lg border border-gray-800/50">
-                            <p class="flex items-start gap-2"><span class="text-gold-primary font-bold">1.</span> Abre tu app bancaria móvil.</p>
-                            <p class="flex items-start gap-2"><span class="text-gold-primary font-bold">2.</span> Selecciona "Transferir" o "Pago SPEI".</p>
-                            <p class="flex items-start gap-2"><span class="text-gold-primary font-bold">3.</span> Pega la CLABE copiada y transfiere el <strong class="text-white font-bold">monto exacto</strong>.</p>
-                            <p class="flex items-start gap-2"><span class="text-verified-green font-bold"><i class="fa-solid fa-check"></i></span> El acceso se liberará aquí automáticamente.</p>
-                        </div>
-                    </div>
-                    <div id="success-state" class="hidden bg-verified-green/10 border border-verified-green rounded-xl p-6 text-center mt-4">
-                        <div class="w-16 h-16 bg-verified-green text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-[0_0_20px_rgba(16,185,129,0.5)]">
-                            <i class="fa-solid fa-check text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">¡Pago Confirmado!</h3>
-                        <p class="text-sm text-gray-300 mb-4">Tu servicio ha sido liberado exitosamente.</p>
-                        <button onclick="window.location.href='https://wa.me/'" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-                            <i class="fa-brands fa-whatsapp text-xl"></i> IR AL CHAT AHORA
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPT GERAL UNIFICADO -->
-    <script>
-        // ==========================================
-        // ROTEAMENTO SINGLE PAGE APP (Nativo)
-        // ==========================================
-        let timerStarted = false;
-
-        function checkHash() {
-            const vistaIg = document.getElementById('vista-ig');
-            const vistaLanding = document.getElementById('vista-landing');
+        <!-- Banner & Avatar -->
+        <div class="relative bg-gray-200">
+            <!-- Banner GIF -->
+            <img src="https://i.postimg.cc/N0t5MQBQ/qss-(1).gif" alt="Banner" class="w-full h-40 md:h-56 object-cover object-center opacity-90">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             
-            if (window.location.hash === '#oferta') {
-                // Esconder IG Profile
-                vistaIg.style.display = 'none';
-                vistaIg.classList.add('hidden');
-                
-                // Mostrar Landing Page
-                vistaLanding.style.display = 'block';
-                vistaLanding.classList.remove('hidden');
-                
-                // Atualizar Fundo e Scroll
-                document.body.style.backgroundColor = '#0d0d0d';
-                window.scrollTo(0, 0);
-                
-                // Iniciar contador apenas 1 vez quando a pessoa chega na oferta
-                if (!timerStarted) {
-                    const countdownEl = document.getElementById('countdown');
-                    if (countdownEl) startCountdown(10, countdownEl);
-                    timerStarted = true;
-                }
-            } else {
-                // Estado Normal (Instagram)
-                vistaIg.style.display = 'flex';
-                vistaIg.classList.remove('hidden');
-                
-                vistaLanding.style.display = 'none';
-                vistaLanding.classList.add('hidden');
-                
-                document.body.style.backgroundColor = '#000000';
-            }
-        }
+            <!-- Avatar -->
+            <div class="absolute -bottom-10 left-4">
+                <div class="w-24 h-24 rounded-full border-4 border-white bg-white relative">
+                    <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" alt="Avatar" class="w-full h-full rounded-full object-cover">
+                    <div class="absolute bottom-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+                </div>
+            </div>
+            
+            <!-- Acciones Banner -->
+            <div class="absolute -bottom-10 right-4 flex gap-2">
+                <button onclick="openModal('checkoutModal', 'Suscripción VIP')" class="w-10 h-10 rounded-full border border-of-border flex items-center justify-center text-of-gray hover:bg-gray-50"><i class="fa-regular fa-star"></i></button>
+                <button onclick="openModal('checkoutModal', 'Suscripción VIP')" class="w-10 h-10 rounded-full border border-of-border flex items-center justify-center text-of-gray hover:bg-gray-50"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+            </div>
+        </div>
 
-        // Listener nativo do navegador para detectar alteração no link
-        window.addEventListener('hashchange', checkHash);
-        window.addEventListener('DOMContentLoaded', checkHash);
+        <!-- Perfil Info -->
+        <div class="mt-14 px-4">
+            <h2 class="font-black text-xl flex items-center gap-1">
+                Camila 💋✨ <i class="fa-solid fa-circle-check text-of-blue text-base"></i>
+            </h2>
+            <p class="text-of-gray text-sm mb-3">@camila.ofc • <span class="text-xs">Visto por última vez hoy</span></p>
+            
+            <div class="text-sm leading-relaxed text-of-dark space-y-2">
+                <p>Bienvenidos a mi rincón más íntimo 😈🔥</p>
+                <p>Soy una chica de <span class="dynamic-city font-bold">tu ciudad</span> dispuesta a cumplir tus fantasías. Al suscribirte obtienes acceso inmediato a:</p>
+                <ul class="space-y-1 mt-2">
+                    <li>💦 <strong class="text-of-blue">Fotos y videos sin censura</strong> de mi galería privada.</li>
+                    <li>📱 <strong class="text-of-blue">Mi WhatsApp Personal</strong> para chat directo (GFE).</li>
+                    <li>🔥 <strong class="text-of-blue">Encuentros Presenciales:</strong> Prioridad para agendar citas en hotel o domicilio.</li>
+                </ul>
+                <p class="text-xs text-of-gray italic mt-2">Pagos 100% seguros y anónimos.</p>
+            </div>
+        </div>
 
-        // ==========================================
-        // LÓGICA DA VISTA 1 (IG)
-        // ==========================================
-        let isFollowing = false;
-        let toastTimeout;
-        
-        function toggleFollowState(btn) {
-            isFollowing = !isFollowing;
-            if (isFollowing) {
-                btn.className = "flex-1 bg-[#363636] hover:bg-[#262626] text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click border border-transparent";
-                btn.innerText = "Pendiente";
-                showToast("Solicitud enviada. Entra al enlace de la bio para acceso inmediato.");
-            } else {
-                btn.className = "flex-1 bg-ig-blue hover:bg-ig-blue-hover text-white font-semibold py-1.5 rounded-lg text-sm transition-colors animate-click";
-                btn.innerText = "Seguir";
-            }
-        }
+        <!-- Subscription Card -->
+        <div class="mt-5 px-4">
+            <div class="border border-of-border rounded-xl overflow-hidden shadow-sm">
+                <div class="bg-gray-50 px-4 py-2.5 border-b border-of-border flex justify-between items-center">
+                    <span class="font-bold text-xs text-gray-500 uppercase tracking-widest">Suscripción</span>
+                    <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase">50% OFF HOY</span>
+                </div>
+                <div class="p-4">
+                    <button onclick="openModal('checkoutModal', 'Suscripción VIP')" class="w-full bg-of-blue hover:bg-of-blue-hover text-white font-black text-base py-3.5 rounded-full transition-transform active:scale-[0.98] flex justify-between items-center px-6 shadow-md">
+                        <span class="uppercase tracking-wide">Suscribirse</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm line-through opacity-70">$240</span>
+                            <span class="text-lg">$120 MXN</span>
+                        </div>
+                    </button>
+                    <p class="text-center text-xs text-of-gray mt-3 flex justify-center items-center gap-1">
+                        <i class="fa-solid fa-lock"></i> Pago procesado de forma segura y discreta.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-        function showFollowPrompt() {
-            showToast("Esta cuenta es privada. Haz clic en el enlace de la biografía.");
-        }
+        <!-- Tabs -->
+        <div class="flex border-b border-of-border mt-6">
+            <div class="flex-1 py-3 text-center border-b-2 border-of-blue text-of-blue font-semibold flex flex-col items-center gap-1">
+                <span class="text-lg">145</span>
+                <span class="text-[10px] uppercase tracking-wider">Posts</span>
+            </div>
+            <div class="flex-1 py-3 text-center text-of-gray flex flex-col items-center gap-1">
+                <span class="text-lg">92</span>
+                <span class="text-[10px] uppercase tracking-wider">Fotos</span>
+            </div>
+            <div class="flex-1 py-3 text-center text-of-gray flex flex-col items-center gap-1">
+                <span class="text-lg">53</span>
+                <span class="text-[10px] uppercase tracking-wider">Videos</span>
+            </div>
+        </div>
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.innerText = message;
-            toast.classList.remove('hidden');
-            setTimeout(() => { toast.classList.replace('opacity-0', 'opacity-100'); }, 10);
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.replace('opacity-100', 'opacity-0');
-                setTimeout(() => toast.classList.add('hidden'), 300);
-            }, 3000);
-        }
+        <!-- Feed (Posts Bloqueados) -->
+        <div class="p-4 space-y-5 bg-gray-50/50">
+            
+            <!-- Post 1 -->
+            <div class="bg-white border border-of-border rounded-xl p-4 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <div class="font-bold text-sm flex items-center gap-1">Camila 💋✨ <i class="fa-solid fa-circle-check text-of-blue text-xs"></i></div>
+                            <div class="text-xs text-of-gray">Hace 2 horas</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-ellipsis text-of-gray"></i>
+                </div>
+                <p class="text-sm mb-3">Recién salida de la ducha... ¿Me ayudas a secarme? 💦🙈 Te dejé un regalito en video. Suscríbete para verlo completo y escribirme al WhatsApp.</p>
+                
+                <div class="relative bg-black rounded-lg aspect-square overflow-hidden cursor-pointer" onclick="openModal('checkoutModal', 'Suscripción VIP')">
+                    <!-- Fundo borrado -->
+                    <img src="https://i.postimg.cc/BZmDVPsq/qss.gif" class="w-full h-full object-cover opacity-50 blur-xl scale-110">
+                    
+                    <!-- Overlay de Bloqueio -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/40">
+                        <i class="fa-solid fa-lock text-4xl text-white mb-3"></i>
+                        <span class="font-bold text-white bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm uppercase tracking-wider">
+                            Suscríbete para ver
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-4 text-of-gray text-lg">
+                    <i class="fa-regular fa-heart cursor-pointer hover:text-red-500"></i>
+                    <i class="fa-regular fa-comment cursor-pointer hover:text-of-blue"></i>
+                    <i class="fa-solid fa-hand-holding-dollar cursor-pointer hover:text-green-500"></i>
+                </div>
+            </div>
 
-        // ==========================================
-        // LÓGICA DA VISTA 2 E INTEGRAÇÕES
-        // ==========================================
+            <!-- Post 2 -->
+            <div class="bg-white border border-of-border rounded-xl p-4 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <div class="font-bold text-sm flex items-center gap-1">Camila 💋✨ <i class="fa-solid fa-circle-check text-of-blue text-xs"></i></div>
+                            <div class="text-xs text-of-gray">Ayer</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-ellipsis text-of-gray"></i>
+                </div>
+                <p class="text-sm mb-3">Jugando un ratito solita en la cama... 🔥 ¿Quieres ser mi compañero? Las citas presenciales están abiertas amor.</p>
+                
+                <div class="relative bg-black rounded-lg aspect-[4/3] overflow-hidden cursor-pointer" onclick="openModal('checkoutModal', 'Suscripción VIP')">
+                    <img src="https://i.postimg.cc/k4n6jqpp/qss-(2).gif" class="w-full h-full object-cover opacity-50 blur-xl scale-110">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/40">
+                        <i class="fa-solid fa-lock text-4xl text-white mb-3"></i>
+                        <span class="font-bold text-white bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm uppercase tracking-wider">
+                            Suscríbete para ver
+                        </span>
+                    </div>
+                </div>
+                <div class="flex gap-4 mt-4 text-of-gray text-lg">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-comment"></i>
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: CHECKOUT SPEI (ONLYFANS THEMED)     -->
+    <!-- ========================================== -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-2xl h-[85vh] sm:h-auto max-h-[800px] shadow-2xl flex flex-col transform translate-y-full sm:translate-y-0 transition-transform duration-300" id="checkoutModalContent">
+            
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white rounded-t-3xl z-10">
+                <h3 class="font-bold text-of-dark flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-green-500"></i> Pago Seguro
+                </h3>
+                <button onclick="closeModal('checkoutModal')" class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="overflow-y-auto flex-1 p-5 hide-scrollbar">
+                
+                <!-- Order Summary -->
+                <div class="bg-of-bg border border-of-border rounded-xl p-4 mb-5 shadow-sm">
+                    <div class="flex items-center gap-3 border-b border-of-border pb-3 mb-3">
+                        <img src="https://i.postimg.cc/J7SJ8VDW/4900290907597376833.jpg" class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 id="checkoutTitle" class="font-bold text-sm text-of-dark">Suscripción VIP (1 Mes)</h4>
+                            <p class="text-xs text-of-gray">Acceso total + WhatsApp</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-sm font-medium text-of-gray">Total a pagar:</span>
+                        <span id="checkoutPrice" class="text-3xl font-black text-of-blue">$120.00 MXN</span>
+                    </div>
+                </div>
+
+                <!-- SPEI UI -->
+                <div id="checkout-instructions-container" class="mb-4">
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <span class="bg-green-100 text-green-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
+                            <i class="fa-solid fa-lock"></i> Transacción Anónima
+                        </span>
+                    </div>
+                    
+                    <!-- Loading State -->
+                    <div id="spei-loading" class="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center flex flex-col items-center justify-center">
+                        <div class="loader-of mb-3"></div>
+                        <p class="text-sm font-semibold text-of-dark">Generando CLABE interbancaria...</p>
+                        <p class="text-xs text-gray-500 mt-1">Conectando con el sistema SPEI</p>
+                    </div>
+
+                    <!-- Data State -->
+                    <div id="spei-data" class="bg-white rounded-xl p-0 text-center hidden">
+                        <p class="text-xs font-bold text-of-gray uppercase tracking-widest mb-2">Tu CLABE (SPEI) para depositar:</p>
+                        
+                        <div class="bg-gray-50 border-2 border-of-blue/30 rounded-xl p-4 mb-4 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-of-blue"></div>
+                            <p id="clabe-code" class="text-2xl sm:text-3xl font-mono text-of-dark tracking-widest break-all font-black" data-clipboard-text="">---</p>
+                        </div>
+
+                        <button onclick="copyCLABE()" class="w-full py-4 bg-of-blue hover:bg-of-blue-hover text-white rounded-xl text-base font-black flex items-center justify-center gap-2 mb-4 shadow-[0_4px_15px_rgba(0,175,240,0.3)] transition-transform active:scale-[0.98]">
+                            <i class="fa-regular fa-copy text-lg"></i> COPIAR CLABE EXACTA
+                        </button>
+                        
+                        <div id="payment-status" class="bg-blue-50 text-blue-700 text-xs py-3 px-3 rounded-lg flex items-center justify-center gap-2 font-semibold border border-blue-100 mb-5">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Esperando confirmación de tu banco...
+                        </div>
+
+                        <div class="text-left text-xs text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-2">
+                            <p class="font-bold text-of-dark mb-1"><i class="fa-solid fa-mobile-screen"></i> Instrucciones rápidas:</p>
+                            <p>1. Abre la app de tu banco (BBVA, Santander, etc).</p>
+                            <p>2. Selecciona Transferir o Pagar (SPEI).</p>
+                            <p>3. Pega la CLABE de arriba y envía exactamente <strong class="text-of-dark">$120.00</strong>.</p>
+                            <p class="text-green-600 font-semibold mt-2"><i class="fa-solid fa-check"></i> El contenido se desbloqueará aquí automáticamente al pagar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success State -->
+                <div id="success-state" class="hidden bg-green-50 border border-green-200 rounded-xl p-8 text-center mt-4">
+                    <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                        <i class="fa-solid fa-check text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-green-700 mb-2">¡Suscripción Activa!</h3>
+                    <p class="text-sm text-gray-600 mb-6">El pago ha sido confirmado. Ya puedes acceder al contenido y contactarme.</p>
+                    <button onclick="window.location.href='https://wa.me/'" class="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-lg shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> IR AL WHATSAPP AHORA
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DA SPA E INTEGRAÇÃO -->
+    <script>
+        // --- 1. Lógica Geolocation (IP) ---
         async function fetchUserCity() {
             try {
                 const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
                 const data = await response.json();
                 const city = data.city || 'tu ciudad';
-                document.querySelectorAll('.dynamic-city').forEach(el => { el.textContent = city; });
+                document.querySelectorAll('.dynamic-city').forEach(el => el.textContent = city);
             } catch (error) {
-                console.warn("No se pudo obtener la ciudad");
+                console.warn("Geolocalización fallida", error);
             }
         }
-        fetchUserCity(); 
+        fetchUserCity();
 
+        // --- 2. Controle de View (SPA) ---
+        // Fake toast interaction for IG gate
+        let toastTimeout;
+        function showFollowPrompt() {
+            alert("Esta cuenta es privada. Haz clic en el enlace de la biografía para ver el contenido.");
+        }
+        function toggleFollowState(btn) {
+            if (btn.innerText === "Seguir") {
+                btn.innerText = "Pendiente";
+                btn.className = "flex-1 bg-[#363636] text-white font-semibold py-1.5 rounded-lg text-sm";
+                alert("Solicitud enviada. Entra al enlace de la bio para acceso inmediato.");
+            } else {
+                btn.innerText = "Seguir";
+                btn.className = "flex-1 bg-ig-blue text-white font-semibold py-1.5 rounded-lg text-sm";
+            }
+        }
+
+        // Função de transição (IG -> OF)
+        function abrirLanding() {
+            const igView = document.getElementById('vista-ig');
+            const loader = document.getElementById('loader-screen');
+            const landingView = document.getElementById('vista-landing');
+
+            // Esconde IG, mostra Loading branco
+            igView.classList.add('hidden');
+            loader.classList.remove('hidden');
+            document.body.style.backgroundColor = '#ffffff';
+
+            // Simula tempo de carregamento da rede e mostra a tela do OF
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                landingView.classList.remove('hidden');
+                landingView.classList.add('fade-in');
+                window.scrollTo(0, 0);
+            }, 800);
+        }
+
+        function voltarIG() {
+            document.getElementById('vista-landing').classList.add('hidden');
+            document.getElementById('vista-ig').classList.remove('hidden');
+            document.body.style.backgroundColor = '#000000';
+            window.scrollTo(0, 0);
+        }
+
+        // --- 3. API HotTrack (SPEI / MXN) ---
         const API_TOKEN = 'b8d5ca45-58d0-47be-87b2-367038994c6b';
         const BASE_URL = 'https://hot-track.com';
-        let currentClickId = "lead_padrao_" + Math.floor(Math.random() * 100000);
+        let currentClickId = "lead_of_" + Math.floor(Math.random() * 100000);
         let pollingInterval = null;
 
+        // Resolve Click Initial
         async function initHotTrack() {
             try {
                 const initData = (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) || '';
@@ -629,66 +489,50 @@
                     const data = await response.json();
                     if (data.click_id) currentClickId = data.click_id;
                 }
-            } catch (e) { console.warn("Utilizando click_id provisório."); }
+            } catch (e) {
+                console.warn("Utilizando click_id provisório OF.");
+            }
         }
         initHotTrack();
 
-        let timerInterval;
-        function startCountdown(durationMinutes, displayElement) {
-            clearInterval(timerInterval);
-            let timer = durationMinutes * 60;
-            timerInterval = setInterval(function () {
-                let minutes = parseInt(timer / 60, 10);
-                let seconds = parseInt(timer % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                displayElement.textContent = minutes + ":" + seconds;
-                if (--timer < 0) { timer = durationMinutes * 60; }
-            }, 1000);
-        }
-
-        const prices = {
-            'WHATSAPP': { title: 'Membresía: Chat WhatsApp', price: '$290.00 MXN', cents: 29000, name: 'WhatsApp Camila' },
-            'ENCUENTRO': { title: 'Reserva: Cita Presencial (50% OFF)', price: '$550.00 MXN', cents: 55000, name: 'Cita Camila' }
-        };
-
-        async function openModal(modalId, type = null) {
+        // --- 4. Modal de Checkout e Geração SPEI ---
+        async function openModal(modalId, planName, priceCents = 12000) {
             const modal = document.getElementById(modalId);
             const content = document.getElementById(modalId + 'Content');
             
-            if(type && prices[type]) {
-                document.getElementById('checkoutTitle').innerText = prices[type].title;
-                document.getElementById('checkoutPrice').innerText = prices[type].price;
-                
-                document.getElementById('spei-loading').classList.remove('hidden');
-                document.getElementById('spei-data').classList.add('hidden');
-                document.getElementById('success-state').classList.add('hidden');
-                document.getElementById('checkout-instructions-container').classList.remove('hidden');
-                document.getElementById('payment-status').innerHTML = "Generando pago...";
-                
-                if(pollingInterval) clearInterval(pollingInterval);
-                await generateSPEI(prices[type].cents, prices[type].name);
-            }
+            // Setup visual states
+            document.getElementById('spei-loading').classList.remove('hidden');
+            document.getElementById('spei-data').classList.add('hidden');
+            document.getElementById('success-state').classList.add('hidden');
+            document.getElementById('checkout-instructions-container').classList.remove('hidden');
+            
+            if(pollingInterval) clearInterval(pollingInterval);
 
+            // Open animation
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
-                if(modalId === 'checkoutModal') content.classList.remove('translate-y-full');
-                else content.classList.remove('scale-95');
+                content.classList.remove('translate-y-full');
             }, 10);
             document.body.style.overflow = 'hidden';
+
+            // Chama a API HotTrack
+            await generateSPEI(priceCents, planName);
         }
         
         async function generateSPEI(valueCents, productName) {
             try {
                 const response = await fetch(`${BASE_URL}/api/pix/generate`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'x-api-key': API_TOKEN },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': API_TOKEN
+                    },
                     body: JSON.stringify({
                         click_id: currentClickId,
                         value_cents: valueCents,
                         product: { name: productName },
-                        currency: 'MXN' 
+                        currency: 'MXN' // Força modo SPEI/México
                     })
                 });
 
@@ -703,21 +547,25 @@
 
                     document.getElementById('spei-loading').classList.add('hidden');
                     document.getElementById('spei-data').classList.remove('hidden');
-                    document.getElementById('payment-status').innerHTML = '<i class="fa-solid fa-spinner fa-spin text-gold-primary"></i> Esperando confirmación del banco...';
-
+                    
                     if (txId) startPaymentPolling(txId);
-                } else { throw new Error("Erro de API"); }
+                } else {
+                    throw new Error("Error en la API");
+                }
             } catch (error) {
+                // Fallback de contingência visual
                 document.getElementById('spei-loading').classList.add('hidden');
                 document.getElementById('spei-data').classList.remove('hidden');
                 const clabeEl = document.getElementById('clabe-code');
                 clabeEl.innerText = "646180111234567890";
                 clabeEl.dataset.clipboardText = "646180111234567890";
-                document.getElementById('payment-status').innerHTML = '<span class="text-red-400">Error. Clabe alterna generada.</span>';
+                document.getElementById('payment-status').innerHTML = '<span class="text-red-500 font-bold">Error de conexión. Sistema en modo offline.</span>';
             }
         }
 
         function startPaymentPolling(txId) {
+            const statusEl = document.getElementById('payment-status');
+            
             pollingInterval = setInterval(async () => {
                 try {
                     const response = await fetch(`${BASE_URL}/api/pix/status/${txId}`, {
@@ -731,10 +579,11 @@
                             showSuccessScreen();
                         } else if (data.status === 'expired') {
                             clearInterval(pollingInterval);
-                            document.getElementById('payment-status').innerHTML = '<span class="text-red-500 font-bold"><i class="fa-solid fa-circle-exclamation"></i> Pago expirado. Reintenta.</span>';
+                            statusEl.innerHTML = '<span class="text-red-500 font-bold"><i class="fa-solid fa-circle-exclamation"></i> CLABE expirada. Cierra y reintenta.</span>';
+                            statusEl.className = "bg-red-50 text-red-700 text-xs py-3 px-3 rounded-lg border border-red-200 mb-5 text-center";
                         }
                     }
-                } catch (e) { console.error("Erro polling"); }
+                } catch (e) { console.error("Error polling", e); }
             }, 4000); 
         }
 
@@ -748,8 +597,7 @@
             const content = document.getElementById(modalId + 'Content');
             
             modal.classList.add('opacity-0');
-            if(modalId === 'checkoutModal') content.classList.add('translate-y-full');
-            else content.classList.add('scale-95');
+            content.classList.add('translate-y-full');
             
             if(pollingInterval) clearInterval(pollingInterval);
 
@@ -772,23 +620,20 @@
             
             const btn = document.querySelector('button[onclick="copyCLABE()"]');
             const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check text-xl"></i> ¡CLABE COPIADA!';
-            btn.classList.replace('bg-gold-primary', 'bg-verified-green');
-            btn.classList.replace('hover:bg-gold-light', 'hover:bg-green-400');
-            btn.classList.replace('text-black', 'text-white');
+            btn.innerHTML = '<i class="fa-solid fa-check text-xl"></i> ¡CLABE COPIADA CON ÉXITO!';
+            btn.classList.replace('bg-of-blue', 'bg-green-500');
+            btn.classList.replace('hover:bg-of-blue-hover', 'hover:bg-green-600');
             
             setTimeout(() => {
                 btn.innerHTML = originalHTML;
-                btn.classList.replace('bg-verified-green', 'bg-gold-primary');
-                btn.classList.replace('hover:bg-green-400', 'hover:bg-gold-light');
-                btn.classList.replace('text-white', 'text-black');
+                btn.classList.replace('bg-green-500', 'bg-of-blue');
+                btn.classList.replace('hover:bg-green-600', 'hover:bg-of-blue-hover');
             }, 2500);
         }
 
+        // Fechar click fora
         window.onclick = function(event) {
-            const trustModal = document.getElementById('trustModal');
             const checkoutModal = document.getElementById('checkoutModal');
-            if (event.target == trustModal) closeModal('trustModal');
             if (event.target == checkoutModal) closeModal('checkoutModal');
         }
     </script>
